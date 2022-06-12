@@ -7,6 +7,11 @@ const port = 3000;
 
 const route = require('./routes');
 
+const db = require('./config/db');
+
+// Connect to DB
+db.connect();
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Http Logger
