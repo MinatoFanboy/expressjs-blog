@@ -17,6 +17,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Http Logger
 app.use(morgan('combined'));
 
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 // Template Engine
 app.set('view engine', 'hbs');
 
