@@ -1,15 +1,16 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
+require('dotenv').config();
 
 async function connect() {
     try {
-        await mongoose.connect('mongodb://localhost:27017/f8_education', {
+        await mongoose.connect(process.env.MONGODB_URI, {
             useNewUrlParser: true,
-            useUnifiedTopology: true
+            useUnifiedTopology: true,
         });
         console.log('Connect successfully!!!');
     } catch (error) {
-        console.log('Connect failure!!!');
+        console.log('Connect failure!!! >>:', error);
     }
 }
 
-module.exports = {connect}
+module.exports = { connect };
