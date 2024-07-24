@@ -6,6 +6,8 @@ async function connect() {
         await mongoose.connect(process.env.MONGODB_URI, {
             useNewUrlParser: true,
             useUnifiedTopology: true,
+            tls: true,
+            tlsAllowInvalidCertificates: true,
         });
         console.log('Connect successfully!!!');
     } catch (error) {
