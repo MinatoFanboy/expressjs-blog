@@ -1,4 +1,4 @@
-module.exports = function SortMiddlewares(req, res, next) {
+module.exports = function sortMiddlewares(req, res, next) {
     res.locals._sort = {
         enable: false,
         type: 'default',

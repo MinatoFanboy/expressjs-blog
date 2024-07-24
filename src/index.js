@@ -11,7 +11,7 @@ const route = require('./routes');
 
 const db = require('./config/db');
 
-const sortMiddleWares = require('./app/middlewares/SortMiddlewares');
+const sortMiddleWares = require('./app/middlewares/sortMiddlewares_alter');
 
 // Connect to DB
 db.connect();
@@ -33,28 +33,7 @@ app.engine(
     'hbs',
     handlebars.engine({
         extname: '.hbs',
-        helpers: {
-            sortable: (field, sort) => {
-                const sortType = field === sort.column ? sort.type : 'default'
-
-                const icons = {
-                    asc: 'bi bi-chevron-up',
-                    default: 'bi bi-chevron-expand',
-                    desc: 'bi bi-chevron-down'
-                }
-                const types = {
-                    asc: 'desc',
-                    default: 'desc',
-                    desc: 'asc',
-                }
-                
-                const icon = icons[sortType];
-                const type = types[sort.type];
-
-                return `<a href="?_sort&column=${field}&type=${type}"><i class="${icon}"></i></a>`
-            },
-            sum: (a, b) => a + b,
-        }
+        helpers: require('./helpers/handlebars')
     }),
 );
 
