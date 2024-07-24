@@ -11,6 +11,8 @@ router.get('/:slug', courseController.show);
 
 router.get('/:id/edit', courseController.edit);
 
+router.post('/handle-form-actions', courseController.handleFormActions);
+
 router.put('/:id', courseController.update);
 
 router.delete('/:id', courseController.destroy);
