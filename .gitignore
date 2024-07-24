@@ -3,3 +3,7 @@
 /src/public/css
 
 .env
+
+# OSX
+#
+.DS_Store

@@ -11,6 +11,8 @@ const route = require('./routes');
 
 const db = require('./config/db');
 
+const sortMiddleWares = require('./app/middlewares/sortMiddlewares');
+
 // Connect to DB
 db.connect();
 
@@ -22,6 +24,7 @@ app.use(morgan('combined'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
+app.use(sortMiddleWares);
 
 // Template Engine
 app.set('view engine', 'hbs');
@@ -30,9 +33,7 @@ app.engine(
     'hbs',
     handlebars.engine({
         extname: '.hbs',
-        helpers: {
-            sum: (a, b) => a + b,
-        }
+        helpers: require('./helpers/handlebars')
     }),
 );
 
