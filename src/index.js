@@ -11,7 +11,7 @@ const route = require('./routes');
 
 const db = require('./config/db');
 
-const sortMiddleWares = require('./app/middlewares/sortMiddlewares_alter');
+const sortMiddleWares = require('./app/middlewares/sortMiddlewares');
 
 // Connect to DB
 db.connect();

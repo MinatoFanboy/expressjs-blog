@@ -63,7 +63,7 @@ class CourseController {
             .catch(next);
     }
 
-    // [RESTORE], /courses/:id/restore
+    // [PATCH], /courses/:id/restore
     restore(req, res, next) {
         Course.restore({ _id: req.params.id })
             .then(() => {
