@@ -4,6 +4,7 @@ const morgan = require('morgan');
 const handlebars = require('express-handlebars');
 const cors = require('cors');
 const methodOverride = require('method-override');
+// const cookieParser = require('cookie-parser');
 require('dotenv').config();
 const app = express();
 const port = process.env.PORT || 3000;
@@ -14,6 +15,8 @@ const db = require('./config/db');
 
 const sortMiddleWares = require('./app/middlewares/sortMiddlewares');
 
+// app.use(cookieParser());
+
 // Connect to DB
 db.connect();
 
@@ -23,6 +26,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(morgan('combined'));
 
 app.use(cors());
+// app.use(cors({ credentials: true, origin: 'http://localhost:5173' }));
+
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 app.use(methodOverride('_method'));
